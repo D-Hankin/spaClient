@@ -1,10 +1,33 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import Menu from './menu/Menu'
 
 function App() {
 
   const [page, setPage] = useState("home");
+
+  useEffect(() => {
+  
+    let pageUrl = page;
+
+    if (!pageUrl) {
+      const queryParameters: URLSearchParams = new URLSearchParams(window.location.search);
+      const getUrl: string | null = queryParameters.get("page");
+  
+      if(getUrl) {
+        pageUrl = getUrl;
+        setPage(getUrl) 
+      } else {
+        pageUrl = "home";
+      }
+    }
+
+    window.history.pushState(
+      null, 
+      "",
+      "?page=" + pageUrl
+    )
+  }, [page])
 
   return (
     <>
