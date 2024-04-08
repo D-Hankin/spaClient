@@ -4,7 +4,7 @@ import Menu from './menu/Menu'
 
 function App() {
 
-  const [page, setPage] = useState("home");
+  const [page, setPage] = useState("");
 
   useEffect(() => {
   
