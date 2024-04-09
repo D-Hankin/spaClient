@@ -38,14 +38,14 @@ function App() {
       <h1>The Pit of Despair Spa and Relaxtion Center</h1>
       <div id='contentDiv'>
         <div id='menuLeftDiv'>
-        <Menu page={page} setPage={setPage} />
+          <Menu page={page} setPage={setPage} />
         </div>
+        <div id='contentRightDiv'>
+          { page === "home" ? <Home key={page} /> : null}
+          { page === "booking" ? <Booking key={page} /> : null}
+          { page === "staff" ? <Staff key={page}/> : null}
+          { page === "contact" ? <Contact key={page}/> : null}
       </div>
-      <div id='contentRightDiv'>
-      { page === "home" ? <Home key={page} /> : null}
-      { page === "booking" ? <Booking key={page} /> : null}
-      { page === "staff" ? <Staff key={page}/> : null}
-      { page === "contact" ? <Contact key={page}/> : null}
     </div>
     </>
   )

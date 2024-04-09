@@ -13,3 +13,11 @@
   padding-top: 3%;
  
 }
+
+#menuLeftDiv{
+  width: 25%;
+}
+
+#contentRightDiv {
+  width: 70%;
+}
