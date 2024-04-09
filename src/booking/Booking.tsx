@@ -2,7 +2,10 @@ import React from 'react'
 
 function Booking() {
   return (
-    <div>Booking</div>
+    <>
+      <h2>Welcome to the booking page!</h2>
+      <h3>Choose a date and treatment to see available sessions</h3>
+    </>
   )
 }
 
