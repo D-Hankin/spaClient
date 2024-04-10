@@ -33,6 +33,10 @@ function App() {
     )
   }, [page])
 
+  const updatePage = (newPage: string) => {
+    setPage(page+newPage);
+  }
+
   return (
     <>
       <h1>The Pit of Despair Spa and Relaxtion Center</h1>
@@ -41,10 +45,10 @@ function App() {
           <Menu page={page} setPage={setPage} />
         </div>
         <div id='contentRightDiv'>
-          { page === "home" ? <Home key={page} /> : null}
-          { page === "booking" ? <Booking key={page} /> : null}
-          { page === "staff" ? <Staff key={page}/> : null}
-          { page === "contact" ? <Contact key={page}/> : null}
+          { page.startsWith("home") ? <Home key={page} /> : null}
+          { page.startsWith("booking") ? <Booking key={page} updatePage={updatePage}/> : null}
+          { page.startsWith("staff") ? <Staff key={page} updatePage={updatePage} /> : null}
+          { page.startsWith("contact") ? <Contact key={page}/> : null}
       </div>
     </div>
     </>

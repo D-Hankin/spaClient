@@ -1,6 +1,10 @@
 import React from 'react'
 
-function Staff() {
+interface Props {
+  updatePage: (newPage: string) => void
+}  
+
+function Staff(props: Props) {
   return (
     <div>Staff</div>
   )
