@@ -1,18 +1,13 @@
-import React from 'react'
-
 interface Props {
-    selectedTreatment: String,
-    setSelectedTreatment: (selectedTreatment: String) => void
+    updateSelectedTreatment: (treatment: String) => void;
     updatePage: (newPage: string) => void
 }  
 
 function GetTreatment(props: Props) {
 
-    function handleClick(arg0: string): void {
-
-        props.setSelectedTreatment(arg0);
-        throw new Error('Function not implemented.')
-        
+    function handleClick(treatment: string): void {
+        props.updateSelectedTreatment(treatment);
+        console.log(treatment);
     }
 
   return (

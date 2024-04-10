@@ -5,7 +5,7 @@ import 'react-calendar/dist/Calendar.css';
 import './calenderComponent.css';
 
 interface Props {
-  selectedDate: Date,
+  selectedDate: Date | null,
   setSelectedDate: (selectedDate: Date) => void,
   updatePage: (newPage: string) => void
 };
@@ -24,12 +24,15 @@ function calender(props: Props) {
     getRedDays().then(setRedDays);
   }, []);
 
-  const handleClick = () => {
-    props.setSelectedDate
-
-    if (!window.location.href.includes("date")) {
-      props.updatePage("?date=" + props.selectedDate.toDateString().trim())
-    }
+  const handleClick = (value: Date) => {
+    props.setSelectedDate(value);
+    
+    // if (window.location.href.includes("date=" + value.toLocaleDateString(undefined, { year: 'numeric', month: '2-digit', day: '2-digit' }))) {
+    //     new URLSearchParams(window.location.search).delete("date");
+    //     props.updatePage("?date=" + value.toLocaleDateString(undefined, { year: 'numeric', month: '2-digit', day: '2-digit' }));
+    // } else {
+    //   props.updatePage("?date=" + value.toLocaleDateString(undefined, { year: 'numeric', month: '2-digit', day: '2-digit' }));
+    // }
   }
 
   const isDateDisabled = ({ date }: { date: Date }) => {
@@ -38,7 +41,7 @@ function calender(props: Props) {
 
   return (
     <div id='calenderDiv'>
-      <Calendar className="calender" onClickDay={handleClick} value={props.selectedDate} maxDate={maxDate} minDate={new Date()} selectRange={false} tileDisabled={isDateDisabled} />
+      <Calendar className="calender" onClickDay={value => handleClick(value)} value={props.selectedDate} maxDate={maxDate} minDate={new Date()} selectRange={false} tileDisabled={isDateDisabled} />
     </div>
   )
 }

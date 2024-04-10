@@ -1,46 +1,50 @@
-import React from 'react'
+import { useEffect, useState } from 'react'
+import ShowAvailableSessions from './showAvailableSessions/ShowAvailableSessions';
 
 interface Props {
     selectedDate: Date,
     selectedTreatment: String,
-    updatePage: (newPage: string) => void
+    updateSelectedTime: (time: String) => void;
 }
 
-// function findBooking(props: Props) {
-//     console.log();
-//     fetch("http://localhost:8080/api/find-sessions", {
-//         method: "GET",
-//         headers: {
-//             "Content-Type": "application/text",
-//             "date" : date
-//         }
-//     }).then(res => res.json())
-//     .then(data => {
-//         console.log(data);
-//     });
-
+interface Session {
+    time: string,
+    treatment: string
+}
 
 function GetSessions(props: Props) {
-    const date: string = props.selectedDate.toISOString();
-    const dateWithoutTime = date.substring(0, 10);
-    console.log(date);
-    fetch("http://localhost:8080/api/find-sessions", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            "date" : dateWithoutTime
+
+    const [bookedSessions, setBookedSession] = useState<Session[][]>([]);
+
+    const chosenTime = (time: string) => {
+    props.updateSelectedTime(time);
+    }
+
+    useEffect(() => {
+        console.log(bookedSessions);
+    }, [bookedSessions])
+
+    const date: string = props.selectedDate.toLocaleDateString(undefined, { year: 'numeric', month: '2-digit', day: '2-digit' });
+    console.log(date)
+
+    useEffect (() => {
+        async function getBookedSessions() {
+            await fetch("http://localhost:8080/api/find-sessions/" + date)
+            .then(res => res.json())
+            .then(data => {
+                setBookedSession(data);
+            });
         }
-    }).then(res => res.json())
-    .then(data => {
-        console.log(data);
-    });
+        getBookedSessions();
+    }, [props.selectedDate]);
+
 
   return (
     <div>
-        <table>
-            <thead>{props.selectedDate.toDateString()}</thead>
-            
-        </table>
+    <table>
+        <thead><tr><th></th><th>{props.selectedTreatment + ", " + props.selectedDate.toDateString()}</th><th></th></tr></thead>
+        <ShowAvailableSessions bookedSessions={bookedSessions} selectedTreatment={props.selectedTreatment} chosenTime={chosenTime} />
+    </table>
     </div>
   )
 }
