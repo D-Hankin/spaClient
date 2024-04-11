@@ -1,5 +1,5 @@
 interface Props {
-    updateSelectedTreatment: (treatment: String) => void;
+    updateSelectedTreatment: (treatment: string) => void;
     updatePage: (newPage: string) => void
 }  
 

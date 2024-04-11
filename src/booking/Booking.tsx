@@ -14,8 +14,8 @@ interface Props {
 function Booking(props: Props) {
 
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-  const [selectedTreatment, setSelectedTreatment] = useState<String>("");
-  const [selectedTime, setSelectedTime] = useState<String>("");
+  const [selectedTreatment, setSelectedTreatment] = useState<string>("");
+  const [selectedTime, setSelectedTime] = useState<string>("");
   const [confirmation, setConfirmation] = useState<Boolean>(false);
   const [success, setSuccess] = useState<Boolean>(false);
 
@@ -23,7 +23,7 @@ function Booking(props: Props) {
     setSelectedDate(null)
   }
 
-  const updateSelectedTime = (time: String) => {
+  const updateSelectedTime = (time: string) => {
     setSelectedTime(time);
   }
 
@@ -31,7 +31,7 @@ function Booking(props: Props) {
     setConfirmation(value); 
   }
 
-  const updateSelectedTreatment = (treatment: String) => {
+  const updateSelectedTreatment = (treatment: string) => {
     setSelectedTreatment(treatment);
   }
 
@@ -47,9 +47,6 @@ function Booking(props: Props) {
 
   useEffect(() => {
     setSelectedTime("");
-    console.log(selectedTreatment);
-    console.log(selectedTime);
-    console.log(selectedDate);
   }, [selectedTreatment]);
 
   useEffect(() => {
