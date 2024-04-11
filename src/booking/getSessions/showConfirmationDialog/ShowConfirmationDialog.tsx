@@ -5,7 +5,8 @@ interface Props {
     selectedTreatment: String,
     selectedTime: String,
     openCloseConfirmationDialog: (value: Boolean) => void,
-    updateSuccess: (value: Boolean) => void
+    updateSuccess: (value: Boolean) => void,
+    updateBookingNumber : (value: number) => void
 }
 
 function ShowConfirmationDialog(props: Props) {
@@ -36,6 +37,7 @@ function ShowConfirmationDialog(props: Props) {
         .then(data => {
             console.log(data);
             props.updateSuccess(true);
+            props.updateBookingNumber(data.bookingNumber);
         })
         props.openCloseConfirmationDialog(false);
     } 
