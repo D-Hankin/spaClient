@@ -1,13 +1,7 @@
 import { useState } from "react";
 import BookingFound from "./bookingFound/BookingFound";
 
-interface Props {
-    updateSelectedDate: (value: Date | null) => void;
-    updateSelectedTreatment: (value : string) => void;
-    updateSelectedTime: (value: string) => void;
-}
-
-function findBooking(props: Props) {
+function findBooking() {
 
     const [searchBookingNumber, setSearchBookingNumber] = useState<string>("");
     const [foundDate, setFoundDate] = useState<Date>(new Date());
