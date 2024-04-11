@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import Menu from './menu/Menu'
+import Home from './home/Home';
+import Booking from './booking/Booking';
+import Staff from './staff/Staff';
+import Contact from './contact/Contact';
 
 function App() {
 
@@ -29,12 +33,24 @@ function App() {
     )
   }, [page])
 
+  const updatePage = (newPage: string) => {
+    setPage(page+newPage);
+  }
+
   return (
     <>
       <h1>The Pit of Despair Spa and Relaxtion Center</h1>
       <div id='contentDiv'>
-        <Menu page={page} setPage={setPage} />
+        <div id='menuLeftDiv'>
+          <Menu page={page} setPage={setPage} />
+        </div>
+        <div id='contentRightDiv'>
+          { page.startsWith("home") ? <Home key={page} /> : null}
+          { page.startsWith("booking") ? <Booking key={page} updatePage={updatePage}/> : null}
+          { page.startsWith("staff") ? <Staff key={page} updatePage={updatePage} /> : null}
+          { page.startsWith("contact") ? <Contact key={page}/> : null}
       </div>
+    </div>
     </>
   )
 }
