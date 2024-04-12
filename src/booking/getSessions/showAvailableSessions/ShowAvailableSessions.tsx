@@ -13,8 +13,16 @@ interface Session {
 function ShowAvailableSessions(props: Props) {
 
     const sessionIsBooked = (time: string, treatment: string) => {
+        const startTime: number = parseInt(time.substring(0, 2));
+        const currentHour = new Date().getHours();
+        console.log(startTime, currentHour)
+        if(currentHour >= startTime) {
+            return true;
+        }
+        
         for (let i = 0; i < props.bookedSessions.length; i++) {
-            const sessionArray = props.bookedSessions[i];
+            
+            const sessionArray: Session[] = props.bookedSessions[i];
     
             if (String(sessionArray[0]) === time && String(sessionArray[1]) === treatment) {
                 return true;
