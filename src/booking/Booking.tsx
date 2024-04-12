@@ -74,7 +74,9 @@ function Booking(props: Props) {
 
   return (
     <div id='bookingDiv'>
-      <h2>Welcome to the booking page!</h2>
+      <div>
+        <h2>Welcome to the booking page!</h2>
+      </div>
       { selectedDate === null ? <FindBooking updateSearchedForBooking={updateSearchedForBooking} searchedForBooking={searchedForBooking}/> : null}
       { selectedDate === null && searchedForBooking === false ? <CalenderComponent key="calender" selectedDate={selectedDate} setSelectedDate={setSelectedDate} updatePage={props.updatePage} /> : null}
       { selectedTreatment === "" && selectedDate !== null ? <GetTreatment key="treatment" updateSelectedTreatment={updateSelectedTreatment} updatePage={props.updatePage} /> : null}

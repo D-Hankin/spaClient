@@ -19,5 +19,12 @@
 }
 
 #contentRightDiv {
-  width: 70%;
+  width: 800px;
+  max-width: 70%;
+  margin-right: 10px;
+  text-align: center;
+}
+
+input {
+  padding: 8px;
 }
