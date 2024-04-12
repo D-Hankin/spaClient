@@ -36,6 +36,8 @@ function calender(props: Props) {
     <div id='calenderDiv'>
       <h3>Or choose a date and treatment to see available sessions</h3>
       <Calendar className="calender" onClickDay={value => handleClick(value)} value={props.selectedDate} maxDate={maxDate} minDate={new Date()} selectRange={false} tileDisabled={isDateDisabled} />
+      <p>*Closed on mondays for removal of gore. Bookings maximum 6 months in advance.</p>
+      <p>**Here in The Pit of Despair we respect Swedish bank holidays specifically. DON'T ask why.</p>
     </div>
   )
 }

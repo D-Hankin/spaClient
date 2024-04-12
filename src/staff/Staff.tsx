@@ -2,11 +2,7 @@ import { useState } from 'react'
 import StaffStart from './staffStart/StaffStart';
 import SingleStaff from './singleStaff/SingleStaff';
 
-interface Props {
-  updatePage: (newPage: string) => void
-}  
-
-function Staff(props: Props) {
+function Staff() {
 
   const [chosenStaff, setChosenStaff] = useState<string>("");
 

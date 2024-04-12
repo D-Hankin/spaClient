@@ -1,7 +1,12 @@
 import { useState } from "react";
 import BookingFound from "./bookingFound/BookingFound";
 
-function findBooking() {
+interface Props {
+    updateSearchedForBooking: (value: Boolean) => void;
+    searchedForBooking: Boolean;
+}
+
+function findBooking(props: Props) {
 
     const [searchBookingNumber, setSearchBookingNumber] = useState<string>("");
     const [foundDate, setFoundDate] = useState<Date>(new Date());
@@ -9,6 +14,8 @@ function findBooking() {
     const [foundSessionTime, setFoundSessionTime] = useState<string>("");
     const [foundName, setFoundName] = useState<string>("");
     const [bookingCancelled, setBookingCancelled] = useState<string>("");
+    const [backClick, setBackClick] = useState<boolean>(false);
+    const [notFoundMessage, setNotFoundMessage] = useState<string>("");
 
     const checkValidBookingNumber = (value: string): boolean => {
         const testValue = /^\d{9}$/;
@@ -17,11 +24,18 @@ function findBooking() {
 
     const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
+        setBackClick(false);
         if (searchBookingNumber) {
             if (checkValidBookingNumber(searchBookingNumber)) {
                 const fetchAddress = "http://localhost:8080/api/find-booking/" + searchBookingNumber;
                 fetch(fetchAddress)
-                .then(res => res.json())
+                .then(res => {
+                    if (res.ok) {
+                        return res.json();
+                    } else {
+                        throw new Error("Booking not found");
+                    }
+                })
                 .then(booking => {
                     console.log(booking);
 
@@ -32,8 +46,14 @@ function findBooking() {
                     setFoundSessionType(booking.sessionType)
                     setFoundSessionTime(booking.session);
                     setFoundName(booking.name);
+                    props.updateSearchedForBooking(true);
+                }).catch(error => {
+                    console.error("Error:", error.message);
+                    setNotFoundMessage("No booking found with the provided number.");
+                    props.updateSearchedForBooking(true);
                 });
             }
+            setSearchBookingNumber("");
         } 
     }
 
@@ -48,15 +68,22 @@ function findBooking() {
         })
     }
 
+    const handleClick = () => {
+        props.updateSearchedForBooking(false);
+        setBackClick(true);
+    }
+
   return (
     <div>
-        <h3>Enter a booking number to see an existing booking:</h3> 
+        <h3>Enter a 9 digit booking number to see an existing booking:</h3> 
         <form onSubmit={handleSubmit}>
-        <input id="bookingNumber" value={searchBookingNumber} onChange={(e) => setSearchBookingNumber(e.target.value)}/>
+        <input id="bookingNumber" value={searchBookingNumber} onChange={(e) => setSearchBookingNumber(e.target.value)} style={ {color : checkValidBookingNumber(searchBookingNumber) ? 'green' : 'red' }}/>
         <button type="submit">Search</button>
-        {foundName !== "" ? <BookingFound date={foundDate} name={foundName} sessionTime={foundSessionTime} sessionType={foundSessionType} cancelBooking={cancelBooking}/> : null } 
-        {bookingCancelled !== "" ? <h2>Booking Cancelled!</h2> : null}
+        { notFoundMessage !== "" && backClick === false ? <h3>{ notFoundMessage }</h3> : null}
+        { foundName !== "" && backClick == false ? <BookingFound date={foundDate} name={foundName} sessionTime={foundSessionTime} sessionType={foundSessionType} cancelBooking={cancelBooking}/> : null } 
+        { bookingCancelled !== "" ? <h2>Booking Cancelled!</h2> : null}
         </form>
+        { props.searchedForBooking ? <button onClick={handleClick}>Back</button> : null }
     </div>
   )
 }
