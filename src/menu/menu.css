@@ -1,15 +1,25 @@
 #menu {
     list-style-type: none;
-    width: 100%;
+    width: 250px;
     font-size: 150%;
     cursor: pointer;
+    margin-top: 40px;
 }
 
 .listDivs {
     display: flex;
     justify-content: space-between;
+    width: 60%;
 }
 
-.menuLi {
-    margin-right: 8px;
+.itemDivs {
+    display: flex;
+    justify-content: flex-end;
+    width: fit-content;
 }
+
+.arrowDiv {
+    text-align: center;
+}
+
+
