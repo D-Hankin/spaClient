@@ -1,30 +1,36 @@
-# React + TypeScript + Vite
+# spaClient
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a Single Page Application (SPA) client developed by [D-Hankin](https://github.com/D-Hankin) as a part of a school project for Java Developer studies at Jönköping University. The client interacts with the backend server provided by the [spa-server](https://github.com/D-Hankin/spa-server) repository.
 
-Currently, two official plugins are available:
+## Cloning the Repository
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+To clone this repository to your local machine, you can use the following command:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```bash
+git clone https://github.com:D-Hankin/spaClient.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Project Overview
+
+The spaClient project is built using React with TypeScript and Vite as the build tool. 
+
+Running the Client
+
+To run the spaClient, follow these steps:
+
+    Make sure you have Node.js and npm installed. You can download them from Node.js official website and follow the installation instructions.
+    Open your terminal or command prompt.
+    Navigate to the spaClient folder of this project.
+    Install dependencies by running:
+
+bash
+
+npm install
+
+    Start the development server by running:
+
+bash
+
+npm run dev
+
+This command will start the development server and open the application in your default web browser.
