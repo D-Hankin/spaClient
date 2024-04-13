@@ -32,3 +32,5 @@ Start the development server by running:
 npm run dev
 ```
 This command will start the development server and provide the local machine address to access the client.
+
+** All images and icons were take from pixabay.com and iconfinder.com and are free for commercial use.
