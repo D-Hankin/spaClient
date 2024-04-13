@@ -1,4 +1,4 @@
-# The Pit of Despair Spa and Relaxtion Centger - Client
+# The Pit of Despair Spa and Relaxtion Center - Client
 
 This project is a Single Page Application (SPA) client developed by [D-Hankin](https://github.com/D-Hankin) as a part of a school project for Java Developer studies at Jönköping University. The client interacts with the backend server provided by the [spa-server](https://github.com/D-Hankin/spa-server) repository.
 
