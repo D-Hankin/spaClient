@@ -39,7 +39,7 @@ function App() {
 
   return (
     <>
-      <h1>The Pit of Despair Spa and Relaxtion Center</h1>
+      <h1 id='headerDiv'>The Pit of Despair Spa and Relaxtion Center</h1>
       <div id='contentDiv'>
         <div id='menuLeftDiv'>
           <Menu page={page} setPage={setPage} />
@@ -47,7 +47,7 @@ function App() {
         <div id='contentRightDiv'>
           { page.startsWith("home") ? <Home key={page} /> : null}
           { page.startsWith("booking") ? <Booking key={page} updatePage={updatePage}/> : null}
-          { page.startsWith("staff") ? <Staff key={page} updatePage={updatePage} /> : null}
+          { page.startsWith("staff") ? <Staff key={page} /> : null}
           { page.startsWith("contact") ? <Contact key={page}/> : null}
       </div>
     </div>

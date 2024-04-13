@@ -3,8 +3,8 @@ import ShowAvailableSessions from './showAvailableSessions/ShowAvailableSessions
 
 interface Props {
     selectedDate: Date,
-    selectedTreatment: String,
-    updateSelectedTime: (time: String) => void;
+    selectedTreatment: string,
+    updateSelectedTime: (time: string) => void;
 }
 
 interface Session {
@@ -14,25 +14,20 @@ interface Session {
 
 function GetSessions(props: Props) {
 
-    const [bookedSessions, setBookedSession] = useState<Session[][]>([]);
-
+    const [bookedSessions, setBookedSessions] = useState<Session[][]>([]);
+    
+    const date: String = props.selectedDate.toLocaleDateString(undefined, { year: 'numeric', month: '2-digit', day: '2-digit' });
+    
     const chosenTime = (time: string) => {
     props.updateSelectedTime(time);
     }
-
-    useEffect(() => {
-        console.log(bookedSessions);
-    }, [bookedSessions])
-
-    const date: string = props.selectedDate.toLocaleDateString(undefined, { year: 'numeric', month: '2-digit', day: '2-digit' });
-    console.log(date)
 
     useEffect (() => {
         async function getBookedSessions() {
             await fetch("http://localhost:8080/api/find-sessions/" + date)
             .then(res => res.json())
             .then(data => {
-                setBookedSession(data);
+                setBookedSessions(data);
             });
         }
         getBookedSessions();
@@ -40,12 +35,10 @@ function GetSessions(props: Props) {
 
 
   return (
-    <div>
-    <table>
+    <table id='tableSessions'>
         <thead><tr><th></th><th>{props.selectedTreatment + ", " + props.selectedDate.toDateString()}</th><th></th></tr></thead>
-        <ShowAvailableSessions bookedSessions={bookedSessions} selectedTreatment={props.selectedTreatment} chosenTime={chosenTime} />
+        <ShowAvailableSessions bookedSessions={bookedSessions} selectedTreatment={props.selectedTreatment} chosenTime={chosenTime} selectedDate={props.selectedDate} />
     </table>
-    </div>
   )
 }
 

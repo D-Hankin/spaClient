@@ -26,13 +26,6 @@ function calender(props: Props) {
 
   const handleClick = (value: Date) => {
     props.setSelectedDate(value);
-    
-    // if (window.location.href.includes("date=" + value.toLocaleDateString(undefined, { year: 'numeric', month: '2-digit', day: '2-digit' }))) {
-    //     new URLSearchParams(window.location.search).delete("date");
-    //     props.updatePage("?date=" + value.toLocaleDateString(undefined, { year: 'numeric', month: '2-digit', day: '2-digit' }));
-    // } else {
-    //   props.updatePage("?date=" + value.toLocaleDateString(undefined, { year: 'numeric', month: '2-digit', day: '2-digit' }));
-    // }
   }
 
   const isDateDisabled = ({ date }: { date: Date }) => {
@@ -41,7 +34,10 @@ function calender(props: Props) {
 
   return (
     <div id='calenderDiv'>
+      <h3>Or choose a date and treatment to see available sessions</h3>
       <Calendar className="calender" onClickDay={value => handleClick(value)} value={props.selectedDate} maxDate={maxDate} minDate={new Date()} selectRange={false} tileDisabled={isDateDisabled} />
+      <p>*Closed on mondays for removal of gore. Bookings maximum 6 months in advance.</p>
+      <p>**Here in The Pit of Despair we respect Swedish bank holidays specifically. DON'T ask why.</p>
     </div>
   )
 }
