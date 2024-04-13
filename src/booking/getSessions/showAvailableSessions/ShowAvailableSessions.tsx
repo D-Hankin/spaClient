@@ -17,13 +17,11 @@ function ShowAvailableSessions(props: Props) {
     const sessionIsBooked = (time: string, treatment: string) => {
         const startTime: number = parseInt(time.substring(0, 2));
         const currentHour = new Date().getHours();
-        console.log(props.selectedDate.getTime(), new Date().getTime())
+        
         if(currentHour >= startTime && props.selectedDate.getDate() === new Date().getDate()) {
             return true;
         }
-        
         for (let i = 0; i < props.bookedSessions.length; i++) {
-            
             const sessionArray: Session[] = props.bookedSessions[i];
     
             if (String(sessionArray[0]) === time && String(sessionArray[1]) === treatment) {

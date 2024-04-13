@@ -26,8 +26,6 @@ function ShowConfirmationDialog(props: Props) {
 
     const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
-        console.log(name, email, phoneNumber);
-
         if (isEmailValid && isPhoneNumberValid && name.trim() !== "") {
             fetch("http://localhost:8080/api/create-booking", {
                 method: "POST",

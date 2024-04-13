@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 interface Props {
     selectedDate: Date | null;
     selectedTreatment: string;
@@ -7,6 +9,11 @@ interface Props {
   }
 
 function SuccessfulBooking(props: Props) {
+
+    const [randomStaff] = useState<string[]>(["Azazel", "Belial"]);
+
+    const randomNumber: number = Math.random() < 0.5 ? 0 : 1;
+
   
     const handleClick = () => {
         props.updateSelectedDate(null);
@@ -19,9 +26,9 @@ function SuccessfulBooking(props: Props) {
     <h2>Booking Number: {props.bookingNumber}</h2>
     <h3>{props.selectedDate?.toDateString()}</h3>
     <h3>{props.selectedTime}</h3>
-    <h3>{props.selectedTreatment}</h3>
+    <h3>{props.selectedTreatment} with {randomStaff[randomNumber]}</h3>
     </div>
-    <button onClick={() => handleClick()}>Start a New Booking</button>
+    <button onClick={() => handleClick()}>Return</button>
     </>
   )
 }
