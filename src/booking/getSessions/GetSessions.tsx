@@ -35,10 +35,7 @@ function GetSessions(props: Props) {
 
 
   return (
-    <table id='tableSessions'>
-        <thead><tr><th></th><th>{props.selectedTreatment + ", " + props.selectedDate.toDateString()}</th><th></th></tr></thead>
         <ShowAvailableSessions bookedSessions={bookedSessions} selectedTreatment={props.selectedTreatment} chosenTime={chosenTime} selectedDate={props.selectedDate} />
-    </table>
   )
 }
 
