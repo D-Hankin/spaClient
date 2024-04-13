@@ -16,6 +16,7 @@ function findBooking(props: Props) {
     const [bookingCancelled, setBookingCancelled] = useState<string>("");
     const [backClick, setBackClick] = useState<boolean>(false);
     const [notFoundMessage, setNotFoundMessage] = useState<string>("");
+    const [cancelBookingNumber, setCancelBookingNumber] = useState("");
 
     const checkValidBookingNumber = (value: string): boolean => {
         const testValue = /^\d{9}$/;
@@ -37,8 +38,6 @@ function findBooking(props: Props) {
                     }
                 })
                 .then(booking => {
-                    console.log(booking);
-
                     const formattedDateString = booking.date;
                     const dateParts = formattedDateString.split("-");
 
@@ -46,6 +45,7 @@ function findBooking(props: Props) {
                     setFoundSessionType(booking.sessionType)
                     setFoundSessionTime(booking.session);
                     setFoundName(booking.name);
+                    setCancelBookingNumber(searchBookingNumber);
                     props.updateSearchedForBooking(true);
                 }).catch(error => {
                     console.error("Error:", error.message);
@@ -58,7 +58,8 @@ function findBooking(props: Props) {
     }
 
     const cancelBooking = () => {
-        fetch("http://localhost:8080/api/cancel-booking/" + searchBookingNumber, {
+        const fetchHTTP: string = "http://localhost:8080/api/cancel-booking/" + cancelBookingNumber;
+        fetch(fetchHTTP, {
             method: "DELETE"
         })
         .then(res => res.text())
@@ -67,10 +68,11 @@ function findBooking(props: Props) {
             setFoundName("")
         })
     }
-
+    
     const handleClick = () => {
         props.updateSearchedForBooking(false);
         setBackClick(true);
+        setCancelBookingNumber("");
     }
 
   return (
@@ -81,7 +83,7 @@ function findBooking(props: Props) {
         <button type="submit">Search</button>
         { notFoundMessage !== "" && backClick === false ? <h3>{ notFoundMessage }</h3> : null}
         { foundName !== "" && backClick == false ? <BookingFound date={foundDate} name={foundName} sessionTime={foundSessionTime} sessionType={foundSessionType} cancelBooking={cancelBooking}/> : null } 
-        { bookingCancelled !== "" ? <h2>Booking Cancelled!</h2> : null}
+        { bookingCancelled !== "" && cancelBookingNumber !== "" ? <h2>Booking Cancelled!</h2> : null}
         </form>
         { props.searchedForBooking ? <button onClick={handleClick}>Back</button> : null }
     </div>

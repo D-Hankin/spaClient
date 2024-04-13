@@ -8,6 +8,7 @@ function Staff() {
 
   const updateChosenStaff = (staff: string) => {
     setChosenStaff(staff);
+
   }
 
   return (

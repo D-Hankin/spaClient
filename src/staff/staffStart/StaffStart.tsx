@@ -15,6 +15,7 @@ function staffStart(props: Props) {
           <h2>Belial</h2>
           <img id="belialImg" src='src\staff\images\Belial.jpg'></img>
         </div>
+        <h4>Click to read more about the damned</h4>
     </div>
   )
 }

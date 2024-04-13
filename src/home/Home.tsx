@@ -3,7 +3,7 @@ import "./home.css";
 function Home() {
   return (
     <>
-      <h1>Welcome Demon!</h1>
+      <h1>Welcome Pathetic Demon!</h1>
       <h3>A hard day torturing the souls of the damned? We offer two relaxation treatments sure to sooth any aching scales!</h3>
       <div id="content">
         <div id="screaming">

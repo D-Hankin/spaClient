@@ -1,5 +1,3 @@
-import ReturnButton from "../returnButton/ReturnButton";
-
 interface Props {
     updateSelectedTreatment: (treatment: string) => void;
     updatePage: (newPage: string) => void
@@ -9,7 +7,6 @@ function GetTreatment(props: Props) {
 
     const handleClick = (treatment: string) => {
         props.updateSelectedTreatment(treatment);
-        console.log(treatment);
     }
 
   return (

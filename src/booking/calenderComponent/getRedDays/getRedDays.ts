@@ -21,7 +21,7 @@ const getRedDays = () => {
     fetch(fetchNextYear).then(res => res.json())
   ]).then(([dataThisYear, dataNextYear]) => {
     const redDaysThisYear = dataThisYear.dagar
-      .filter((day: Day) => day["röd dag"] === "Ja")
+      .filter((day: Day) => day.hasOwnProperty("helgdag"))
       .map((day: Day) => new Date(day.datum).toDateString());
 
     const redDaysNextYear = dataNextYear.dagar
