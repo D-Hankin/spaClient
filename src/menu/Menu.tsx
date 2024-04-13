@@ -7,30 +7,44 @@ interface Props {
 
 function Menu(props: Props) {
   return (
-    <>
     <div id='menuLeftDiv'>
-      <nav>
+      <nav id='menuLeftDiv'>
         <ul id="menu">
           <div className="listDivs">
-            <li className="menuLi" onClick={() => props.setPage("home")}>Home</li>
-            {props.page ==="home" ?<img src="src\menu\images\arrowRight.png"/> : null} 
+            <div className="itemDivs">
+              <li className="menuLi" onClick={() => props.setPage("home")}>Home</li>
+            </div>
+            <div className="arrowDiv">
+              {props.page ==="home" ?<img src="src\menu\images\arrowRight.png"/> : null} 
+            </div>
           </div>
           <div className="listDivs">
-            <li className="menuLi" onClick={() => props.setPage("booking")}>Booking</li>
-            {props.page ==="booking" ?<img src="src\menu\images\arrowRight.png"/> : null}
+            <div className="itemDivs">
+              <li className="menuLi" onClick={() => props.setPage("booking")}>Booking</li>
+            </div>
+            <div className="arrowDiv">  
+              {props.page ==="booking" ?<img src="src\menu\images\arrowRight.png"/> : null}
+            </div>
           </div>
           <div className="listDivs">
-            <li className="menuLi" onClick={() => props.setPage("staff")}>Staff</li>
-            {props.page ==="staff" ?<img src="src\menu\images\arrowRight.png"/> : null}
+            <div className="itemDivs">
+              <li className="menuLi" onClick={() => props.setPage("staff")}>Staff</li>
+            </div>
+            <div className="arrowDiv">
+              {props.page ==="staff" ?<img src="src\menu\images\arrowRight.png"/> : null}
+            </div>
           </div>
           <div className="listDivs">
-            <li className="menuLi" onClick={() => props.setPage("contact")}>Contact</li>
+            <div className="itemDivs">
+              <li className="menuLi" onClick={() => props.setPage("contact")}>Contact</li>
+            </div>
+            <div className="arrowDiv">
             {props.page ==="contact" ?<img src="src\menu\images\arrowRight.png"/> : null}
+            </div>
           </div>
         </ul>
       </nav>   
     </div>
-    </>
   )
 }
 
