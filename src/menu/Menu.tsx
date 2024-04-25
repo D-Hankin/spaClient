@@ -1,4 +1,5 @@
 import "./menu.css";
+import arrowright from "./images/arrowRight.png";
 
 interface Props {
   page: string,
@@ -15,7 +16,7 @@ function Menu(props: Props) {
               <li className="menuLi" onClick={() => props.setPage("home")}>Home</li>
             </div>
             <div className="arrowDiv">
-              {props.page ==="home" ?<img src="src\menu\images\arrowRight.png"/> : null} 
+              {props.page ==="home" ?<img src={ arrowright }/> : null} 
             </div>
           </div>
           <div className="listDivs">
@@ -23,7 +24,7 @@ function Menu(props: Props) {
               <li className="menuLi" onClick={() => props.setPage("booking")}>Booking</li>
             </div>
             <div className="arrowDiv">  
-              {props.page ==="booking" ?<img src="src\menu\images\arrowRight.png"/> : null}
+              {props.page ==="booking" ?<img src={ arrowright }/> : null}
             </div>
           </div>
           <div className="listDivs">
@@ -31,7 +32,7 @@ function Menu(props: Props) {
               <li className="menuLi" onClick={() => props.setPage("staff")}>Staff</li>
             </div>
             <div className="arrowDiv">
-              {props.page ==="staff" ?<img src="src\menu\images\arrowRight.png"/> : null}
+              {props.page ==="staff" ?<img src={ arrowright }/> : null}
             </div>
           </div>
           <div className="listDivs">
@@ -39,7 +40,7 @@ function Menu(props: Props) {
               <li className="menuLi" onClick={() => props.setPage("contact")}>Contact</li>
             </div>
             <div className="arrowDiv">
-            {props.page ==="contact" ?<img src="src\menu\images\arrowRight.png"/> : null}
+            {props.page ==="contact" ?<img src={ arrowright }/> : null}
             </div>
           </div>
         </ul>
