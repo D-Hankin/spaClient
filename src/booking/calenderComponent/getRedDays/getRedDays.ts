@@ -13,8 +13,8 @@ interface Day {
 const getRedDays = () => {
 
   const thisYear: Date = new Date();
-  const fetchThisYear: string = "http://sholiday.faboul.se/dagar/v2.1/" + thisYear.getFullYear()
-  const fetchNextYear: string = "http://sholiday.faboul.se/dagar/v2.1/" + (thisYear.getFullYear() + 1);
+  const fetchThisYear: string = "https://sholiday.faboul.se/dagar/v2.1/" + thisYear.getFullYear()
+  const fetchNextYear: string = "https://sholiday.faboul.se/dagar/v2.1/" + (thisYear.getFullYear() + 1);
   
   const redDaysPromise = Promise.all([
     fetch(fetchThisYear).then(res => res.json()),
