@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import Calendar from 'react-calendar'
 import getRedDays from './getRedDays/getRedDays';
-import 'react-calendar/dist/Calendar.css';
 import './calenderComponent.css';
+import 'react-calendar/dist/Calendar.css';
 
 interface Props {
   selectedDate: Date | null,
