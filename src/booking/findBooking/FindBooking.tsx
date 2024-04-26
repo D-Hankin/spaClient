@@ -28,7 +28,7 @@ function findBooking(props: Props) {
         setBackClick(false);
         if (searchBookingNumber) {
             if (checkValidBookingNumber(searchBookingNumber)) {
-                const fetchAddress = "https://sea-lion-app-tgi42.ondigitalocean.app/api/find-booking/" + searchBookingNumber;
+                const fetchAddress = "https://clownfish-app-2nvjm.ondigitalocean.app/api/find-booking/" + searchBookingNumber;
                 fetch(fetchAddress)
                 .then(res => {
                     if (res.ok) {
@@ -58,7 +58,7 @@ function findBooking(props: Props) {
     }
 
     const cancelBooking = () => {
-        const fetchHTTP: string = "https://sea-lion-app-tgi42.ondigitalocean.app/api/cancel-booking/" + cancelBookingNumber;
+        const fetchHTTP: string = "https://clownfish-app-2nvjm.ondigitalocean.app/api/cancel-booking/" + cancelBookingNumber;
         fetch(fetchHTTP, {
             method: "DELETE"
         })

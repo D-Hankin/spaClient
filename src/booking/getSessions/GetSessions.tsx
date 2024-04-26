@@ -24,7 +24,7 @@ function GetSessions(props: Props) {
 
     useEffect (() => {
         async function getBookedSessions() {
-            await fetch("https://sea-lion-app-tgi42.ondigitalocean.app/api/find-sessions/" + date)
+            await fetch("https://clownfish-app-2nvjm.ondigitalocean.app/api/find-sessions/" + date)
             .then(res => res.json())
             .then(data => {
                 setBookedSessions(data);
