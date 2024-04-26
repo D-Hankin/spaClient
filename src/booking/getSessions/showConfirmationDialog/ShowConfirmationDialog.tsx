@@ -27,7 +27,7 @@ function ShowConfirmationDialog(props: Props) {
     const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         if (isEmailValid && isPhoneNumberValid && name.trim() !== "") {
-            fetch("https:/sea-lion-app-tgi42.ondigitalocean.app/api/create-booking", {
+            fetch("https:/clownfish-app-2nvjm.ondigitalocean.app/api/create-booking", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
